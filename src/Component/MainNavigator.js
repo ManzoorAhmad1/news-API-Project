@@ -15,22 +15,22 @@ const MainNavigator = () => {
                                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">sports</Link>
+                                <Link className="nav-link active" aria-current="page" to="sports">sports</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">bussines</Link>
+                                <Link className="nav-link active" aria-current="page" to="bussines">bussines</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">technology</Link>
+                                <Link className="nav-link active" aria-current="page" to="technology">technology</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">entertainment</Link>
+                                <Link className="nav-link active" aria-current="page" to="entertainment">entertainment</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">health</Link>
+                                <Link className="nav-link active" aria-current="page" to="health">health</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">science</Link>
+                                <Link className="nav-link active" aria-current="page" to="science">science</Link>
                             </li>
 
                         </ul>
