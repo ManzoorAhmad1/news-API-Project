@@ -2,11 +2,11 @@
 import { Link } from "react-router-dom";
 import Card from "../UI/Card";
 import { useEffect, useState } from "react";
-const Home = () => {
+const Business = () => {
     const [Data, setData] = useState([])
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(" https://newsapi.org/v2/top-headlines?country=in&apiKey=32ad1ec8ba01499293a3492f3141822e")
+            const response = await fetch(" https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=32ad1ec8ba01499293a3492f3141822e")
             const data = await response.json();
             setData(data.articles)
         }
@@ -36,4 +36,4 @@ const Home = () => {
 
     )
 }
-export default Home;
+export default Business;
