@@ -1,6 +1,6 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
-import RootesLayout from './Component/Rootes';
+import RootesLayout from './Component/Navbar/Rootes';
 import Home from "./Component/Pages/Home";
 import Business from './Component/Pages/Business';
 import Technology from './Component/Pages/Technology';
