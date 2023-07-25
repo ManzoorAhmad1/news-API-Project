@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import Card from "../UI/Card";
 import LoaderBar from "../Validation/LoaderBar";
 import Error from "../Validation/Error";
-// import PreviousButton from "../UI/PreviousButton";
-// import NextButton from "../UI/NextButton";
 
 const Home = () => {
     const [data, setData] = useState([]);
@@ -19,10 +17,10 @@ const Home = () => {
     }
     const previousPageHadler = () => {
         if (pageSize === 5) {
-            setDesibled(true)
+          setDesibled(true);
         }
-        setPageSize(pageSize - 5)
-    }
+        setPageSize((prevPageSize) => Math.max(prevPageSize - 5, 5));
+      };
     useEffect(() => {
         const fetchData = async () => {
             try {
