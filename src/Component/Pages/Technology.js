@@ -13,7 +13,7 @@ const Technology = () => {
     const [isDesibled, setDesibled] = useState(false)
     const nextPageHandler = () => {
         setPageSize(pageSize + 5)
-
+          setDesibled(true)
     }
     const previousPageHadler = () => {
         if (pageSize === 5) {

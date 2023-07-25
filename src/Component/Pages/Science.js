@@ -17,10 +17,10 @@ const Science = () => {
     }
     const previousPageHadler = () => {
         if (pageSize === 5) {
-            setDesibled(true)
+          setDesibled(true);
         }
-        setPageSize(pageSize - 5)
-    }
+        setPageSize((prevPageSize) => Math.max(prevPageSize - 5, 5));
+      };
     useEffect(() => {
         const fetchData = async () => {
             try {
