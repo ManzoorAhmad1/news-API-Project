@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Card from "../UI/Card";
 import LoaderBar from "../Validation/LoaderBar";
 import Error from "../Validation/Error";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Business = () => {
     const [data, setData] = useState([]);
@@ -10,17 +11,9 @@ const Business = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [pageSize, setPageSize] = useState(5)
-    const [isDesibled, setDesibled] = useState(false)
     const nextPageHandler = () => {
         setPageSize(pageSize + 5)
-
     }
-    const previousPageHadler = () => {
-        if (pageSize === 5) {
-          setDesibled(true);
-        }
-        setPageSize((prevPageSize) => Math.max(prevPageSize - 5, 5));
-      };
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -49,41 +42,49 @@ const Business = () => {
 
     return (
         <Fragment>
-            {!loading ? (
-                <LoaderBar progress={progress} />
-            ) : (
-                <div>
-                    <Card>
-                        {data.map((news) => (
-                            <div
-                                key={news.url}
-                                className="card"
-                                style={{ width: "18rem", margin: "2rem" }}
-                            >
-                                <img src={news.urlToImage} className="card-img-top" alt="error" />
-                                <div className="card-body">
-                                    <h5 className="card-title">{news.title}</h5>
-                                    <p className="card-text">{news.description}</p>
-                                    <p className="card-date">{news.publishedAt}</p>
-                                    <Link to={news.url} className="btn btn-primary">
-                                        Read More
-                                    </Link>
-                                </div>
-                            </div>
-                        ))}
+            <InfiniteScroll
+                dataLength={data.length}
+                next={nextPageHandler}
+                hasMore={true}
+                // loader={<Loader />}
+                scrollableTarget="scrollableDiv"
+            >
+                {!loading ? (
+                    <div>
+                        <LoaderBar progress={progress} />
 
-                    </Card>
-                    <div className="button">
-                        <button onClick={previousPageHadler} disabled={isDesibled}>Previous</button>
-                        <button onClick={nextPageHandler}>Next</button>
                     </div>
-                </div>
-            )
 
-            }
-            <br />
+                ) : (
+                    <div>
+                        <Card>
+                            {data.map((news) => (
+                                <div
+                                    key={news.url}
+                                    className="card"
+                                    style={{ width: "18rem", margin: "2rem" }}
+                                >
+                                    <img src={news.urlToImage} className="card-img-top" alt="error" />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{news.title}</h5>
+                                        <p className="card-text">{news.description}</p>
+                                        <p className="card-date">{news.publishedAt}</p>
+                                        <Link to={news.url} className="btn btn-primary">
+                                            Read More
+                                        </Link>
+                                    </div>
+                                </div>
+                            ))}
 
-            {!loading && error && <Error message={error} />}
+                        </Card>
+
+                    </div>
+                )
+
+                }
+                <br />
+                {!loading && error && <Error message={error} />}
+            </InfiniteScroll>
         </Fragment>
     );
 };
