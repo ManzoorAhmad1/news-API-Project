@@ -14,7 +14,7 @@ code {
 
 .main {
   width: 50%;
-  margin: 0 auto;
+  margin: 3rem auto;
   display: flex;
   box-sizing: border-box;
   border: 1px solid red;
@@ -29,6 +29,7 @@ code {
 .loader {
   width: 100%;
   height: 5px;
+  margin-top:3.5rem;
   background-color: #f0f0f0;
   overflow: hidden;
 }
