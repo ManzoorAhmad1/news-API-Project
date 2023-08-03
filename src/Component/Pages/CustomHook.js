@@ -10,9 +10,21 @@ const CustomHook = ({ category, pageSize }) => {
     const [progress, setProgress] = useState(0);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
-    const nextPageHandler = async () => {
-        <NextPageHandler data="data" category={category} pageSize={pageSize} setError={setError} setData={setData} />
-    };
+    const NextPageHandler = async () => {
+        try {
+            const nextPage = Math.floor(data.length / pageSize) + 1; // Calculate the next page
+            const response = await fetch(
+                `https://newsapi.org/v2/top-headlines?country=in&page=${nextPage}&pageSize=${pageSize}&category=${category}&apiKey=32ad1ec8ba01499293a3492f3141822e`
+            );
+            if (!response.ok) {
+                throw new Error("Could not fetch data " + response.status);
+            }
+            const newData = await response.json();
+            setData(prevData => [...prevData, ...newData.articles]);
+        } catch (error) {
+            setError("Could not load more news.");
+        }
+    }
 
     useEffect(() => {
         const fetchData = async () => {
