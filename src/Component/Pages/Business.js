@@ -5,7 +5,7 @@ const Business = () => {
 
     return (
         <Fragment>
-            <CustomHook category="business" pageSize="6" />
+            {/* <CustomHook category="business" pageSize="6" /> */}
 
         </Fragment>
     );

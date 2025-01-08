@@ -4,7 +4,6 @@ import Card from "../UI/Card";
 import LoaderBar from "../Validation/LoaderBar";
 import Error from "../Validation/Error";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { NextPageHandler } from "../../Component/NextPageHandler";
 const CustomHook = ({ category, pageSize }) => {
     const [data, setData] = useState([]);
     const [progress, setProgress] = useState(0);
@@ -56,7 +55,7 @@ const CustomHook = ({ category, pageSize }) => {
             <Fragment>
                 <InfiniteScroll
                     dataLength={data.length}
-                    next={nextPageHandler}
+                    // next={nextPageHandler}
                     hasMore={true}
                     // loader={<Loader />}
                     scrollableTarget="scrollableDiv"
