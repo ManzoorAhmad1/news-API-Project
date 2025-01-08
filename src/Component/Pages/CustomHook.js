@@ -4,7 +4,6 @@ import Card from "../UI/Card";
 import LoaderBar from "../Validation/LoaderBar";
 import Error from "../Validation/Error";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { NextPageHandler } from "../../Component/NextPageHandler";
 const CustomHook = ({ category, pageSize }) => {
     const [data, setData] = useState([]);
     const [progress, setProgress] = useState(0);
@@ -14,7 +13,7 @@ const CustomHook = ({ category, pageSize }) => {
         try {
             const nextPage = Math.floor(data.length / pageSize) + 1; // Calculate the next page
             const response = await fetch(
-                `https://newsapi.org/v2/top-headlines?country=in&page=${nextPage}&pageSize=${pageSize}&category=${category}&apiKey=32ad1ec8ba01499293a3492f3141822e`
+                `https://newsapi.org/v2/top-headlines?country=us&page=${nextPage}&pageSize=${pageSize}&category=${category}&apiKey=32ad1ec8ba01499293a3492f3141822e`
             );
             if (!response.ok) {
                 throw new Error("Could not fetch data " + response.status);
@@ -31,7 +30,7 @@ const CustomHook = ({ category, pageSize }) => {
             try {
                 setProgress(20);
                 const response = await fetch(
-                    `https://newsapi.org/v2/top-headlines?country=in&pageSize=${pageSize}&category=${category}&apiKey=32ad1ec8ba01499293a3492f3141822e`
+                    `https://newsapi.org/v2/top-headlines?country=us&pageSize=${pageSize}&category=${category}&apiKey=32ad1ec8ba01499293a3492f3141822e`
                 );
                 setProgress(40);
                 if (!response.ok) {
@@ -56,7 +55,7 @@ const CustomHook = ({ category, pageSize }) => {
             <Fragment>
                 <InfiniteScroll
                     dataLength={data.length}
-                    next={nextPageHandler}
+                    next={NextPageHandler}
                     hasMore={true}
                     // loader={<Loader />}
                     scrollableTarget="scrollableDiv"
